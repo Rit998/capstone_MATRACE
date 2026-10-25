@@ -1,0 +1,8 @@
+# Direct dependencies pinned to the versions used during implementation.
+# uv.lock also locks their transitive dependencies.
+langgraph==1.2.17
+langgraph-checkpoint-sqlite==3.1.2
+langsmith==0.14.12
+openai==3.37.0
+pydantic==2.14.1
+python-dotenv==1.2.4

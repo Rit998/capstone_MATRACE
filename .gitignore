@@ -8,3 +8,10 @@ wheels/
 
 # Virtual environments
 .venv
+
+# Local credentials and working copies/checkpoints (never fixtures).
+.env
+.env.*
+!.env.example
+.runtime/
+.pytest_cache/

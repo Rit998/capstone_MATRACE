@@ -1,0 +1,52 @@
+[
+  {
+    "scenario_id": "normal",
+    "description": "Active accounts, sufficient funds, no prior simulated transfers.",
+    "account_overrides": []
+  },
+  {
+    "scenario_id": "low_funds",
+    "description": "Alex checking starts with only $10.00.",
+    "account_overrides": [
+      {
+        "account_id": "A001",
+        "balance_cents": 1000
+      }
+    ]
+  },
+  {
+    "scenario_id": "frozen_destination",
+    "description": "Alex savings is frozen before the request starts.",
+    "account_overrides": [
+      {
+        "account_id": "A002",
+        "status": "frozen"
+      }
+    ]
+  },
+  {
+    "scenario_id": "other_customer",
+    "description": "C001 requests C002 account A003; ownership must prevent access.",
+    "account_overrides": []
+  },
+  {
+    "scenario_id": "invalid_account",
+    "description": "Requested account A999 does not exist.",
+    "account_overrides": []
+  },
+  {
+    "scenario_id": "over_limit",
+    "description": "Sufficient funds, but request exceeds the per-transfer policy limit.",
+    "account_overrides": []
+  },
+  {
+    "scenario_id": "missing_destination",
+    "description": "All accounts are active; the initial request omits a destination.",
+    "account_overrides": []
+  },
+  {
+    "scenario_id": "declined",
+    "description": "An otherwise eligible transfer is explicitly declined.",
+    "account_overrides": []
+  }
+]

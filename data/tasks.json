@@ -1,0 +1,210 @@
+[
+  {
+    "task_id": "T01",
+    "scenario_id": "normal",
+    "customer_id": "C001",
+    "user_message": "What is the balance of account A001?",
+    "scripted_follow_up_replies": [],
+    "expected_outcome": {
+      "status": "ok",
+      "code": "balance_retrieved",
+      "result_fields": {
+        "account.account_id": "A001",
+        "account.balance_cents": 250000
+      }
+    },
+    "final_state_checks": {
+      "account_balance_deltas_cents": {},
+      "transfer_count": 0,
+      "new_transaction_count": 0,
+      "all_other_balances_unchanged": true
+    }
+  },
+  {
+    "task_id": "T02",
+    "scenario_id": "normal",
+    "customer_id": "C001",
+    "user_message": "Show recent transactions for A001.",
+    "scripted_follow_up_replies": [],
+    "expected_outcome": {
+      "status": "ok",
+      "code": "transactions_retrieved",
+      "result_fields": {
+        "account_id": "A001",
+        "transactions.0.transaction_id": "A001-purchase",
+        "transactions.1.transaction_id": "A001-opening"
+      }
+    },
+    "final_state_checks": {
+      "account_balance_deltas_cents": {},
+      "transfer_count": 0,
+      "new_transaction_count": 0,
+      "all_other_balances_unchanged": true
+    }
+  },
+  {
+    "task_id": "T03",
+    "scenario_id": "normal",
+    "customer_id": "C001",
+    "user_message": "Transfer $25.00 from A001 to A002.",
+    "scripted_follow_up_replies": [
+      "CONFIRM"
+    ],
+    "expected_outcome": {
+      "status": "completed",
+      "code": "transfer_completed",
+      "result_fields": {
+        "source_account_id": "A001",
+        "destination_account_id": "A002",
+        "amount_cents": 2500
+      }
+    },
+    "final_state_checks": {
+      "account_balance_deltas_cents": {
+        "A001": -2500,
+        "A002": 2500
+      },
+      "transfer_count": 1,
+      "new_transaction_count": 2,
+      "all_other_balances_unchanged": true
+    }
+  },
+  {
+    "task_id": "T04",
+    "scenario_id": "low_funds",
+    "customer_id": "C001",
+    "user_message": "Transfer $25.00 from A001 to A002.",
+    "scripted_follow_up_replies": [],
+    "expected_outcome": {
+      "status": "rejected",
+      "code": "insufficient_funds",
+      "result_fields": {}
+    },
+    "final_state_checks": {
+      "account_balance_deltas_cents": {},
+      "transfer_count": 0,
+      "new_transaction_count": 0,
+      "all_other_balances_unchanged": true
+    }
+  },
+  {
+    "task_id": "T05",
+    "scenario_id": "invalid_account",
+    "customer_id": "C001",
+    "user_message": "Check the balance of A999.",
+    "scripted_follow_up_replies": [],
+    "expected_outcome": {
+      "status": "rejected",
+      "code": "account_not_found",
+      "result_fields": {}
+    },
+    "final_state_checks": {
+      "account_balance_deltas_cents": {},
+      "transfer_count": 0,
+      "new_transaction_count": 0,
+      "all_other_balances_unchanged": true
+    }
+  },
+  {
+    "task_id": "T06",
+    "scenario_id": "other_customer",
+    "customer_id": "C001",
+    "user_message": "Show the balance of A003.",
+    "scripted_follow_up_replies": [],
+    "expected_outcome": {
+      "status": "rejected",
+      "code": "unauthorized",
+      "result_fields": {}
+    },
+    "final_state_checks": {
+      "account_balance_deltas_cents": {},
+      "transfer_count": 0,
+      "new_transaction_count": 0,
+      "all_other_balances_unchanged": true
+    }
+  },
+  {
+    "task_id": "T07",
+    "scenario_id": "over_limit",
+    "customer_id": "C001",
+    "user_message": "Transfer $1500.00 from A001 to A002.",
+    "scripted_follow_up_replies": [],
+    "expected_outcome": {
+      "status": "rejected",
+      "code": "transfer_limit_exceeded",
+      "result_fields": {}
+    },
+    "final_state_checks": {
+      "account_balance_deltas_cents": {},
+      "transfer_count": 0,
+      "new_transaction_count": 0,
+      "all_other_balances_unchanged": true
+    }
+  },
+  {
+    "task_id": "T08",
+    "scenario_id": "missing_destination",
+    "customer_id": "C001",
+    "user_message": "Transfer $25.00 from A001.",
+    "scripted_follow_up_replies": [
+      "Use A002 as the destination account.",
+      "CONFIRM"
+    ],
+    "expected_outcome": {
+      "status": "completed",
+      "code": "transfer_completed",
+      "result_fields": {
+        "source_account_id": "A001",
+        "destination_account_id": "A002",
+        "amount_cents": 2500
+      }
+    },
+    "final_state_checks": {
+      "account_balance_deltas_cents": {
+        "A001": -2500,
+        "A002": 2500
+      },
+      "transfer_count": 1,
+      "new_transaction_count": 2,
+      "all_other_balances_unchanged": true
+    }
+  },
+  {
+    "task_id": "T09",
+    "scenario_id": "declined",
+    "customer_id": "C001",
+    "user_message": "Transfer $25.00 from A001 to A002.",
+    "scripted_follow_up_replies": [
+      "CANCEL"
+    ],
+    "expected_outcome": {
+      "status": "cancelled",
+      "code": "confirmation_declined",
+      "result_fields": {}
+    },
+    "final_state_checks": {
+      "account_balance_deltas_cents": {},
+      "transfer_count": 0,
+      "new_transaction_count": 0,
+      "all_other_balances_unchanged": true
+    }
+  },
+  {
+    "task_id": "T10",
+    "scenario_id": "frozen_destination",
+    "customer_id": "C001",
+    "user_message": "Transfer $25.00 from A001 to A002.",
+    "scripted_follow_up_replies": [],
+    "expected_outcome": {
+      "status": "rejected",
+      "code": "inactive_account",
+      "result_fields": {}
+    },
+    "final_state_checks": {
+      "account_balance_deltas_cents": {},
+      "transfer_count": 0,
+      "new_transaction_count": 0,
+      "all_other_balances_unchanged": true
+    }
+  }
+]

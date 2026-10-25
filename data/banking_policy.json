@@ -1,0 +1,18 @@
+{
+  "currency": "USD",
+  "max_transfer_cents": 100000,
+  "daily_transfer_limit_cents": 200000,
+  "recent_transaction_count": 5,
+  "rules": [
+    "Authenticate with the fictional customer ID and demo PIN before account access.",
+    "Read only accounts owned by the authenticated customer.",
+    "Transfers must have a positive integer amount in USD cents.",
+    "Transfers must be between distinct accounts owned by the authenticated customer.",
+    "Both transfer accounts must be active.",
+    "The source balance must cover the amount; overdrafts are prohibited.",
+    "Maximum amount per transfer is 100000 cents ($1000.00).",
+    "Maximum total outgoing transfers per customer per UTC day is 200000 cents ($2000.00).",
+    "Display exact source, destination, amount, and currency and require CONFIRM before writing.",
+    "Recheck all conditions inside the atomic transfer tool and execute each operation ID at most once."
+  ]
+}

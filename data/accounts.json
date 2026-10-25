@@ -1,0 +1,72 @@
+[
+  {
+    "account_id": "A001",
+    "customer_id": "C001",
+    "account_type": "checking",
+    "balance_cents": 250000,
+    "status": "active"
+  },
+  {
+    "account_id": "A002",
+    "customer_id": "C001",
+    "account_type": "savings",
+    "balance_cents": 100000,
+    "status": "active"
+  },
+  {
+    "account_id": "A003",
+    "customer_id": "C002",
+    "account_type": "checking",
+    "balance_cents": 180000,
+    "status": "active"
+  },
+  {
+    "account_id": "A004",
+    "customer_id": "C002",
+    "account_type": "savings",
+    "balance_cents": 450000,
+    "status": "active"
+  },
+  {
+    "account_id": "A005",
+    "customer_id": "C003",
+    "account_type": "checking",
+    "balance_cents": 95000,
+    "status": "active"
+  },
+  {
+    "account_id": "A006",
+    "customer_id": "C003",
+    "account_type": "savings",
+    "balance_cents": 225000,
+    "status": "active"
+  },
+  {
+    "account_id": "A007",
+    "customer_id": "C004",
+    "account_type": "checking",
+    "balance_cents": 320000,
+    "status": "active"
+  },
+  {
+    "account_id": "A008",
+    "customer_id": "C004",
+    "account_type": "savings",
+    "balance_cents": 800000,
+    "status": "active"
+  },
+  {
+    "account_id": "A009",
+    "customer_id": "C005",
+    "account_type": "checking",
+    "balance_cents": 125000,
+    "status": "active"
+  },
+  {
+    "account_id": "A010",
+    "customer_id": "C005",
+    "account_type": "savings",
+    "balance_cents": 300000,
+    "status": "active"
+  }
+]

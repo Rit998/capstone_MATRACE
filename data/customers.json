@@ -1,0 +1,27 @@
+[
+  {
+    "customer_id": "C001",
+    "name": "Alex Rowan",
+    "demo_pin": "1101"
+  },
+  {
+    "customer_id": "C002",
+    "name": "Blair Vale",
+    "demo_pin": "2202"
+  },
+  {
+    "customer_id": "C003",
+    "name": "Casey Pine",
+    "demo_pin": "3303"
+  },
+  {
+    "customer_id": "C004",
+    "name": "Drew Meadow",
+    "demo_pin": "4404"
+  },
+  {
+    "customer_id": "C005",
+    "name": "Emery Brook",
+    "demo_pin": "5505"
+  }
+]
